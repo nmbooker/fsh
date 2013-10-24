@@ -1,0 +1,14 @@
+#!/bin/bash
+TOSTDERR=false
+if [ "$1" == "-e" ] ; then
+    TOSTDERR=true
+    shift
+fi
+
+if $TOSTDERR ; then
+    pwd >&2
+else
+    pwd
+fi
+eval "${*}"
+exit $?
